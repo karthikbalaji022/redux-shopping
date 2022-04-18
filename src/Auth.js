@@ -1,8 +1,8 @@
 import React from "react";
 import {useSelector,useDispatch} from 'react-redux'
 function Auth(){
-    const context=useSelector((state)=>state.count)
-    console.log(context+ " val")
+    const auth=useSelector((state)=>state)
+    const dispatch=useDispatch();
     const center={
         display:"flex",
         justifyContent:"center",
@@ -15,9 +15,13 @@ function Auth(){
     }
     function submit(e){
         e.preventDefault();
-        console.log()
         const id=e.target[0].value;
         const p=e.target[1].value;
+        if(id===auth.id && p===auth.pass)
+        dispatch({type:"login",payload:{val:true}})
+        else{
+            dispatch({type:"login",payload:{val:false}})
+        }
     }
     return(
         <div className="LoginContainer" style={center}>

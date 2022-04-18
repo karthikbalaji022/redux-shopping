@@ -1,16 +1,19 @@
 import { createStore } from "redux";
-var initialValue={
-    count:0
-}
-const reducer=(state={initialValue}, action)=>
+
+const reducer=(state={
+    id:"karthikbalaji022@gmail.com",
+    pass:"1234",
+    loggedin:false
+}, action)=>
 {
 switch(action.type)
 {
+    case "login":
+        return {...state,loggedin:action.payload.val}
     default:
         return state
 }
 }
 
 const store=createStore(reducer)
-export {store};
-export default reducer
+export default store;
