@@ -1,9 +1,10 @@
 import './App.css';
+import Auth from './Auth'
 
 function App() {
   return (
     <div className="App">
-      <h1>I am shop</h1>
+      <Auth/>
     </div>
   );
 }

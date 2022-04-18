@@ -12,4 +12,5 @@ switch(action.type)
 }
 
 const store=createStore(reducer)
-export default store
+export {store};
+export default reducer
