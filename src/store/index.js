@@ -17,8 +17,9 @@ switch(action.type)
         state.count=state.count+1;
         return state
     case "additem":
-        let item=action.payload.item
+        var item=action.payload.item
         let i=item.id
+        console.log(state.cartItem)
         if(state.cartItem.hasOwnProperty(item.id))
         {
             Object.entries(state.cartItem).map(([key,value])=>{
@@ -37,9 +38,17 @@ switch(action.type)
                     
         return state
     case "remove":
-        return state.cartItem.filter((val)=>{
-            return val.id!=action.payload.item
-        })
+
+        if(state.cartItem.hasOwnProperty(item.id))
+        {
+            Object.entries(state.cartItem).map(([key,value])=>{
+                if(key===i)
+                {
+                  return  state.cartItem={...state.cartItem,[key]:{...value,quantity:value.quantity-1,totalPrice:value.price*(value.quantity-1)}}
+                }
+            })
+        }
+        return state;
     default:
         return state
 }
